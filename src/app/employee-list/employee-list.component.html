@@ -1,0 +1,67 @@
+<!-- Title Query -->
+<div class="employee-list-container">
+  <div style="">
+    <h1 class="title">Employee List</h1>
+    <mat-form-field class="full-width">
+      <mat-label>Search</mat-label>
+      <input
+        matInput
+        #nameInput
+        (keyup)="setQueryParam('name', nameInput.value)"
+        value="{{ selectedName }}"
+      />
+    </mat-form-field>
+    <p class="subtitle">Filter By</p>
+    <div class="field-form-group">
+      <mat-form-field>
+        <mat-label>Gender</mat-label>
+        <mat-select [(value)]="queryKeys['gender']">
+          <mat-option
+            *ngFor="let gender of genders"
+            [value]="gender"
+            (click)="setQueryParam('gender', gender)"
+          >
+            {{ gender }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Species</mat-label>
+        <mat-select [(value)]="queryKeys['species']">
+          <mat-option
+            *ngFor="let specy of species"
+            [value]="specy"
+            (click)="setQueryParam('species', specy)"
+          >
+            {{ specy }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button class="reset-button" (click)="resetQuery()">
+        <mat-icon fontIcon="autorenew"></mat-icon>
+      </button>
+    </div>
+  </div>
+  <!-- List  -->
+  <div *ngIf="!loading" class="list-wrapper">
+    <div *ngFor="let employee of employees">
+      <button class="card-container" [routerLink]="['/employees/details', employee.id]">
+        <mat-card class="card">
+          <div style="display: flex; flex-direction: row; align-items: center">
+            <div class="img-frame">
+              <img src="{{ employee.pfp }}" />
+            </div>
+            <div class="content">
+              <p class="name">
+                {{ employee.name }}
+              </p>
+              <p class="occupation">
+                {{ employee.occupation ? employee.occupation : "Unemployed?" }}
+              </p>
+            </div>
+          </div>
+        </mat-card>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+.drawer-container {
+    width: 200px;
+    height:100%;
+    background: #008EA0FF;
+
+    button {
+        margin-left: 16px;
+        margin-right:16px;
+        margin-top: 64px;
+        width: calc(100% - 32px);
+        padding: 16px;
+        font-size: 24px;
+        background: #84D7E1FF;
+        border: 0px;
+        border-radius: 10px;
+    }
+}

@@ -1,0 +1,77 @@
+<div class="details-container" *ngIf="!loading">
+  <h1 class="title">
+    {{ employee.first }} {{ employee.middle ? employee.middle + " " : "" }}
+    {{ employee.last }}
+  </h1>
+  <div class="container">
+    <div class="profile-picture-container">
+      <p>Profile Picture</p>
+      <div class="profile-picture">
+        <img src="{{ employee.pfp }}" />
+      </div>
+    </div>
+    <div class="personal-details-container">
+      <p>Personal Details</p>
+      <div class="personal-details">
+        <table>
+          <tr>
+            <td>
+              <p class="table-subtitle">Employee ID:</p>
+              {{ employee.id || "-" }}
+            </td>
+            <td>
+              <p class="table-subtitle">Gender :</p>
+              {{ employee.gender || "-" }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p class="table-subtitle">First Name :</p>
+              {{ employee.first || "-" }}
+            </td>
+            <td>
+              <p class="table-subtitle">Middle Name :</p>
+              {{ employee.middle || "-" }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p class="table-subtitle">Last Name :</p>
+              {{ employee.last || "-" }}
+            </td>
+            <td>
+              <p class="table-subtitle">Occupation :</p>
+              {{ employee.occupation || "Unemployed???" }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p class="table-subtitle">Age :</p>
+              {{ employee.age || "-" }}
+            </td>
+            <td>
+              <p class="table-subtitle">Species :</p>
+              {{ employee.species || "-" }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p class="table-subtitle">Home Planet :</p>
+              {{ employee.homePlanet || "-" }}
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="quotes">
+        <p>Quotes</p>
+        <div class="quote-container"
+        >
+          <div *ngFor="let quote of employeeQuotes" style="padding: 4px">
+            <p class="quote-text">{{ quote }}</p>
+            <hr class="mg-0" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
