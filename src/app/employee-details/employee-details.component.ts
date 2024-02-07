@@ -18,7 +18,7 @@ export class EmployeeDetailsComponent implements OnInit {
   public employee: EmployeeData = {};
   public loading: boolean = true;
   public employeeQuotes: string[] = [];
-  public paginationNo: number[] = [];
+  public randomQuotes: string[] = [];
   
   constructor(
     private employeeService: EmployeeService,
@@ -29,7 +29,6 @@ export class EmployeeDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      // Retrieve the id parameter
       const id = params.get('id');
       this.getData(id);
     });
@@ -49,7 +48,6 @@ export class EmployeeDetailsComponent implements OnInit {
   }
 
   assignData(data: any) {
-    console.log("CHARCTER", data)
     this.employee = {
       id: data.id,
       first: data.name.first,
@@ -64,14 +62,20 @@ export class EmployeeDetailsComponent implements OnInit {
       quotes: data.sayings
     }
     this.employeeQuotes = data.sayings;
-    console.log("now", this.employeeQuotes)
+    this.randomizeQuote();
   }
 
-  paginationInit() {
-    const no = Math.ceil(this.employeeQuotes.length / 3)
-    for (let i = 1; i <= no; i++) {
-      this.paginationNo.push(i);
+  randomizeQuote() {
+    this.randomQuotes = [];
+    let randomIndex: number = 0;
+    let remainingQuotes = [...this.employeeQuotes]; // Copy the array to avoid modifying the original
+    
+    for (let i = 0; i < 3; i++) {
+      randomIndex = Math.floor(Math.random() * remainingQuotes.length);
+      this.randomQuotes.push(remainingQuotes[randomIndex]);
+      remainingQuotes.splice(randomIndex, 1); // Remove the selected quote from the array
     }
   }
+
 
 }

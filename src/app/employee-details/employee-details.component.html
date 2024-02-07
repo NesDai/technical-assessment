@@ -66,11 +66,15 @@
         <p>Quotes</p>
         <div class="quote-container"
         >
-          <div *ngFor="let quote of employeeQuotes" style="padding: 4px">
-            <p class="quote-text">{{ quote }}</p>
-            <hr class="mg-0" />
-          </div>
+        <div *ngFor="let quote of randomQuotes; let last = last" style="padding: 4px">
+          <p class="quote-text">{{ quote }}</p>
+          <hr *ngIf="!last" class="mg-0" />
         </div>
+          
+        </div>
+        <button (click)="randomizeQuote()" class="random-button">
+          Randomize!
+        </button>
       </div>
     </div>
   </div>

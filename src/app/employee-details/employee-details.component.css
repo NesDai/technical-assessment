@@ -33,7 +33,7 @@
   margin-left: 8px;
 
   .quote-container {
-    height: 180px;
+    height: max-content;
     width: 600px;
     overflow: auto;
     border-radius: 5px;
@@ -85,3 +85,11 @@
   flex-direction: column;
 }
 
+.random-button {
+  margin-top: 16px;
+  border: 1.5px solid lightgray;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+
+}
